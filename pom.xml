@@ -4,9 +4,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <name>DeepaMehta 4 Reviews</name>
-    <groupId>de.deepamehta</groupId>
-    <artifactId>deepamehta-reviews</artifactId>
+    <name>org.deepamehta Reviews</name>
+    <groupId>org.deepamehta</groupId>
+    <artifactId>eduzen-reviews</artifactId>
     <version>0.1</version>
     <packaging>bundle</packaging>
 
