@@ -21,6 +21,10 @@ import de.deepamehta.core.service.PluginService;
 
 public interface ReviewService extends PluginService {
 
+    Topic addToGood(long resourceId, ClientState clientState);
+    
+    Topic addToSoso(long resourceId, ClientState clientState);
+
     Topic upvoteResourceById(long resourceId, ClientState clientState);
 
     Topic downvoteResourceById(long resourceId, ClientState clientState);

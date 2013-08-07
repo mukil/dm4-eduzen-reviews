@@ -17,7 +17,7 @@ Place the downloaded file `eduzen-reviews-0.X.jar` in the `bundles` folder of yo
 
 # GNU Public License
 
-This DeepaMehta plugin is released under the terms of the GNU General Public License in Version 3.0, 2007. You can find a copy of that [here](http://www.gnu.org/licenses/gpl).
+This sofware is released under the terms of the GNU General Public License in Version 3.0, 2007.
 
 # Icon License
 
@@ -37,4 +37,4 @@ The smiley icons are licensed under Creative Commons [Attribution-Share Alike 3.
 
 - initialization of this plugin.
 
-Copyright 2013, Malte Reißig
+Author, Malte Reißig
