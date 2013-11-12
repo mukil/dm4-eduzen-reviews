@@ -23,7 +23,7 @@ import org.deepamehta.plugins.review.service.ReviewService;
 
 
 /**
- * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta 4.
+ * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta 4.1.1.
  *
  * * Counting values seperately as "Good" and "So-so", depends on introduucing Migration2 to your application model.
  *
@@ -31,7 +31,7 @@ import org.deepamehta.plugins.review.service.ReviewService;
  *
  * @author Malte Reißig (<malte@mikromedia.de>)
  * @website https://github.com/mukil/org.deepamehta-reviews
- * @version 0.3
+ * @version 0.3.1
  *
  */
 
@@ -59,8 +59,8 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         Topic topic = null;
         try {
             // fixme: check if SCORE_URI is part of given topics type definition
-            topic = dms.getTopic(resourceId, true, clientState);
-            TopicType typeDef = dms.getTopicType(topic.getTypeUri(), clientState);
+            topic = dms.getTopic(resourceId, true);
+            TopicType typeDef = dms.getTopicType(topic.getTypeUri());
             Collection<AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
             boolean hasScoreType = false;
             for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
@@ -93,8 +93,8 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         Topic topic = null;
         try {
             // fixme: check if SCORE_URI is part of given topics type definition
-            topic = dms.getTopic(resourceId, true, clientState);
-            TopicType typeDef = dms.getTopicType(topic.getTypeUri(), clientState);
+            topic = dms.getTopic(resourceId, true);
+            TopicType typeDef = dms.getTopicType(topic.getTypeUri());
             Collection<AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
             boolean hasScoreType = false;
             for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
@@ -129,8 +129,8 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         Topic topic = null;
         try {
             // fixme: check if SCORE_URI is part of given topics type definition
-            topic = dms.getTopic(resourceId, true, clientState);
-            TopicType typeDef = dms.getTopicType(topic.getTypeUri(), clientState);
+            topic = dms.getTopic(resourceId, true);
+            TopicType typeDef = dms.getTopicType(topic.getTypeUri());
             Collection<AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
             boolean hasScoreType = false;
             for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
@@ -165,8 +165,8 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         Topic topic = null;
         try {
             // fixme: check if SCORE_URI is part of given topics type definition
-            topic = dms.getTopic(resourceId, true, clientState);
-            TopicType typeDef = dms.getTopicType(topic.getTypeUri(), clientState);
+            topic = dms.getTopic(resourceId, true);
+            TopicType typeDef = dms.getTopicType(topic.getTypeUri());
             Collection<AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
             boolean hasScoreType = false;
             for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
