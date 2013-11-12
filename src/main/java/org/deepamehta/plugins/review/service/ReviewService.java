@@ -10,19 +10,10 @@ import de.deepamehta.core.service.PluginService;
 
 
 
-/**
- * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta 4.
- *
- * @author Malte Reißig (<malte@mikromedia.de>)
- * @website https://github.com/mukil/org.deepamehta-reviews
- * @version 0.2
- *
- */
-
 public interface ReviewService extends PluginService {
 
     Topic addToGood(long resourceId, ClientState clientState);
-    
+
     Topic addToSoso(long resourceId, ClientState clientState);
 
     Topic upvoteResourceById(long resourceId, ClientState clientState);

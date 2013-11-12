@@ -23,7 +23,7 @@ import org.deepamehta.plugins.review.service.ReviewService;
 
 
 /**
- * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta 4.1.1.
+ * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta 4.1.2.
  *
  * * Counting values seperately as "Good" and "So-so", depends on introduucing Migration2 to your application model.
  *
@@ -31,7 +31,7 @@ import org.deepamehta.plugins.review.service.ReviewService;
  *
  * @author Malte Reißig (<malte@mikromedia.de>)
  * @website https://github.com/mukil/org.deepamehta-reviews
- * @version 0.3.1
+ * @version 0.3.2
  *
  */
 
@@ -64,7 +64,6 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
             Collection<AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
             boolean hasScoreType = false;
             for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
-                log.info("DEBUG: AssocDefURI is " + associationDefinitionModel.getChildTypeUri().toLowerCase());
                 if (associationDefinitionModel.getChildTypeUri().equals(GOOD_TYPE_URI)) hasScoreType = true;
             }
             if (hasScoreType) {
