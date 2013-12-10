@@ -31,7 +31,7 @@ import org.deepamehta.plugins.review.service.ReviewService;
  *
  * @author Malte Reißig (<malte@mikromedia.de>)
  * @website https://github.com/mukil/org.deepamehta-reviews
- * @version 0.3.2
+ * @version 0.3.3
  *
  */
 
@@ -42,9 +42,9 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
 
     private Logger log = Logger.getLogger(getClass().getName());
 
-    private final static String SCORE_TYPE_URI = "org.deepamehta.reviews.score";
-    private final static String GOOD_TYPE_URI = "org.deepamehta.reviews.good";
-    private final static String SOSO_TYPE_URI = "org.deepamehta.reviews.soso";
+    public final static String SCORE_TYPE_URI = "org.deepamehta.reviews.score";
+    public final static String GOOD_TYPE_URI = "org.deepamehta.reviews.good";
+    public final static String SOSO_TYPE_URI = "org.deepamehta.reviews.soso";
 
 
     /** Increments the number of supportive voices (yelling "Good!"). */
