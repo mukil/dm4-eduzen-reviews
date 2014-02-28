@@ -1,3 +1,4 @@
+
 # org.deepamehta-Reviews Module for DeepaMehta 4
 
 A module for users who want to interactively extend a DeepaMehta 4 _Topic_- resp. _Association Type_ of their choice about a `Score` field.
@@ -13,7 +14,7 @@ The plugin provides by now two generic service methods allowing to either `/revi
 
 Download the latest `eduzen-reviews`-Bundle from [here](http://download.deepamehta.de/nightly/).
 
-Place the downloaded file `eduzen-reviews-0.X.jar` in the `bundles` folder of your deepamehta installation and restart DeepaMehta.
+Place the downloaded file `dm42-eduzen-reviews-0.X.jar` in the `bundles` folder of your deepamehta installation and restart DeepaMehta.
 
 # GNU Public License
 
@@ -29,6 +30,10 @@ The smiley icons are licensed under Creative Commons [Attribution-Share Alike 3.
 
 # Changelog
 
+0.3.4, Feb 28, 2014
+
+- Compatible with DeepaMehta 4.2
+
 0.2, May 28, 2013
 
 - shipping now with a generic PluginService (RESTful + ApplicationService)
@@ -38,3 +43,4 @@ The smiley icons are licensed under Creative Commons [Attribution-Share Alike 3.
 - initialization of this plugin.
 
 Author, Malte Reißig
+

@@ -1,29 +1,21 @@
 package org.deepamehta.plugins.review;
 
-import java.util.logging.Logger;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.WebApplicationException;
-
 import de.deepamehta.core.Topic;
 import de.deepamehta.core.TopicType;
 import de.deepamehta.core.model.AssociationDefinitionModel;
+import de.deepamehta.core.osgi.PluginActivator;
 import de.deepamehta.core.service.ClientState;
 import de.deepamehta.core.service.Directives;
 import de.deepamehta.core.storage.spi.DeepaMehtaTransaction;
-import de.deepamehta.core.osgi.PluginActivator;
 import java.util.Collection;
+import java.util.logging.Logger;
+import javax.ws.rs.*;
 import org.deepamehta.plugins.review.service.ReviewService;
 
 
 
 /**
- * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta 4.1.2.
+ * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta.
  *
  * * Counting values seperately as "Good" and "So-so", depends on introduucing Migration2 to your application model.
  *
@@ -31,7 +23,7 @@ import org.deepamehta.plugins.review.service.ReviewService;
  *
  * @author Malte Reißig (<malte@mikromedia.de>)
  * @website https://github.com/mukil/org.deepamehta-reviews
- * @version 0.3.3
+ * @version 0.3.4
  *
  */
 
