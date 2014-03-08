@@ -4,10 +4,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <name>org.deepamehta Reviews</name>
+    <name>org.deepamehta eduZEN Reviews</name>
     <groupId>org.deepamehta</groupId>
     <artifactId>dm42-eduzen-reviews</artifactId>
-    <version>0.3.4</version>
+    <version>0.3.5-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
     <parent>
