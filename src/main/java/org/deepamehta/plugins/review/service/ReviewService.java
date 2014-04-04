@@ -7,9 +7,12 @@ import de.deepamehta.core.service.PluginService;
 /**
  * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta.
  *
+ * * Counting values seperately as "Good" and "So-so", depends on introduucing Migration2 to your application model.
+ * * Counting values as one accumulate "Score", depends on introducing Migration1 to your application model.
+ *
  * @author Malte Reißig (<malte@mikromedia.de>)
  * @website https://github.com/mukil/org.deepamehta-reviews
- * @version 0.3.4
+ * @version 0.3.5
  *
  */
 
