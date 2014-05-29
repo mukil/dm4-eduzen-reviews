@@ -1,16 +1,20 @@
 
-# org.deepamehta-Reviews Module for DeepaMehta 4
+# org.deepamehta eduZEN Reviews Module
 
-A module for users who want to interactively extend a DeepaMehta 4 _Topic_- resp. _Association Type_ of their choice about a `Score` field.
+A DeepaMehta 4 module for users who want to interactively extend a DeepaMehta 4 _Topic_- resp. _Association Type_ of their choice about a `Score` field.
 
-The plugin provides by now two generic service methods allowing to either `/review/upvote` or `/review/downvote` _any_ given Topic (provided by ID) which has the "org.deepamehta.review.score"-in its type definition (model).
+The plugin provides two type-independent service methods allowing to either `/review/upvote/{topicId}` or `/review/downvote/{topicId}` _any_ given Topic (provided by ID) which has the "org.deepamehta.review.score"-in its type definition (model).
+
+Furthermore the plugin now provides two type-independent service methods allowing to either `/soso/{topicId}` or `/good/{topicId}` _any_ given Topic (provided by ID) which has the "org.deepamehta.review.soso" resp. "org.deepamehta.review.good" - added to its type definition.
 
 # API: REST-Interface
 
 * GET `/review/upvote/{topicId}`
 * GET `/review/downvote/{topicId}`
+* GET `/soso/{topicId}`
+* GET `/good/{topicId}`
 
-# Install org.deepamehta-Reviews Module
+# Downlaod & Installation
 
 Download the latest `eduzen-reviews`-Bundle from [here](http://download.deepamehta.de/nightly/).
 
@@ -28,19 +32,28 @@ The hashtag icon is licensed under Creative Commons [Attribution 3.0 Unported](h
 
 The smiley icons are licensed under Creative Commons [Attribution-Share Alike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/) and were designed by [The Working Group](http://blog.twg.ca).
 
-# Changelog
+# Version History
 
-0.3.4, Feb 28, 2014
+**0.3.6**, UPCOMING
+
+- Compatible with DeepaMehta 4.3
+
+**0.3.5**, Apr 4, 2014
+
+- Introduced "So So" and "Good" child-types to just count the degree of appreciation by users towards topics.
+
+**0.3.4**, Feb 28, 2014
 
 - Compatible with DeepaMehta 4.2
 
-0.2, May 28, 2013
+**0.2**, May 28, 2013
 
 - shipping now with a generic PluginService (RESTful + ApplicationService)
 
-0.1, Feb 28, 2013
+**0.1**, Feb 28, 2013
 
 - initialization of this plugin.
 
-Author, Malte Reißig
+-------------------------------
+Author, Malte Reißig, 2013-2014
 
