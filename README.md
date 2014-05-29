@@ -1,5 +1,5 @@
 
-# org.deepamehta eduZEN Reviews Module
+# eduZEN Reviews Module
 
 A DeepaMehta 4 module for users who want to interactively extend a DeepaMehta 4 _Topic_- resp. _Association Type_ of their choice about a `Score` field.
 
