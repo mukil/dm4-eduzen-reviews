@@ -7,24 +7,24 @@ The plugin provides two type-independent service methods allowing to either `/re
 
 Furthermore the plugin now provides two type-independent service methods allowing to either `/soso/{topicId}` or `/good/{topicId}` _any_ given Topic (provided by ID) which has the "org.deepamehta.review.soso" resp. "org.deepamehta.review.good" - added to its type definition.
 
-# API: REST-Interface
+## API: REST-Interface
 
 * GET `/review/upvote/{topicId}`
 * GET `/review/downvote/{topicId}`
 * GET `/soso/{topicId}`
 * GET `/good/{topicId}`
 
-# Downlaod & Installation
+## Download & Installation
 
 Download the latest `eduzen-reviews`-Bundle from [here](http://download.deepamehta.de/nightly/).
 
 Place the downloaded file `dm42-eduzen-reviews-0.X.jar` in the `bundles` folder of your deepamehta installation and restart DeepaMehta.
 
-# GNU Public License
+## GNU Public License
 
 This sofware is released under the terms of the GNU General Public License in Version 3.0, 2007.
 
-# Icon License
+## Icon License
 
 The thumbs icons in use by this plugin (Thumbs Up, Thumbs Down) are both licensed under [GPL v2](http://www.gnu.org/licenses/gpl-2.0.html) and were designed by [Hylke](http://www.bomahy.nl).
 
@@ -32,7 +32,7 @@ The hashtag icon is licensed under Creative Commons [Attribution 3.0 Unported](h
 
 The smiley icons are licensed under Creative Commons [Attribution-Share Alike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/) and were designed by [The Working Group](http://blog.twg.ca).
 
-# Version History
+## Version History
 
 **0.3.6**, UPCOMING
 
