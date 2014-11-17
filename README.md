@@ -1,24 +1,25 @@
 
-# eduZEN Reviews Module
+# DeepaMehta 4 Reviews Module
 
-A DeepaMehta 4 module for users who want to interactively extend a DeepaMehta 4 _Topic_- resp. _Association Type_ of their choice about a `Score` field.
+A DeepaMehta 4 module for users and developers who want to  extend a DeepaMehta 4 _Topic_- resp. _Association Type_ of their choice about a `Score`, a `Good!` or a `Soso`-field.
 
-The plugin provides two type-independent service methods allowing to either `/review/upvote/{topicId}` or `/review/downvote/{topicId}` _any_ given Topic (provided by ID) which has the "org.deepamehta.review.score"-in its type definition (model).
-
-Furthermore the plugin now provides two type-independent service methods allowing to either `/soso/{topicId}` or `/good/{topicId}` _any_ given Topic (provided by ID) which has the "org.deepamehta.review.soso" resp. "org.deepamehta.review.good" - added to its type definition.
+The plugin provides four **type-independent service methods** allowing to _upvote_, _downvote_ or _+1 on good_ or _+1 on so-so_ on 
+_any_ given topic (provided by ID). Regarding which ones you prefer more, just add the corrspending child-topics to the _Topic Type_ definition of your choice and you can start to use the service.
 
 ## API: REST-Interface
 
-* GET `/review/upvote/{topicId}`
-* GET `/review/downvote/{topicId}`
-* GET `/soso/{topicId}`
-* GET `/good/{topicId}`
+ * GET `/review/upvote/{topicId}` - writes +1 `org.deepamehta.review.score`
+ * GET `/review/downvote/{topicId}` - writes -1 on `org.deepamehta.review.score`
+ * GET `/review/soso/{topicId}` - writes +1 on `org.deepamehta.review.soso`
+ * GET `/review/good/{topicId}` - writes +1 on `org.deepamehta.review.good`
+ 
+Note: This model is not compatible with the dm4-webclient. Simply because the DM Webclient tries sends _String_ values back to the server despite we actually defined a `dm4.core.number`-Data Type in our model. Make sure your data gets no invariance and therefore instantiate/migrate all your topics of the given type to have stored simple _Integer_ default values (e.g. 0) here.
 
 ## Download & Installation
 
-Download the latest `eduzen-reviews`-Bundle from [here](http://download.deepamehta.de/nightly/).
+Download the latest `dm43-eduzen-reviews`-Bundle from [here](http://download.deepamehta.de/nightly/).
 
-Place the downloaded file `dm42-eduzen-reviews-0.X.jar` in the `bundles` folder of your deepamehta installation and restart DeepaMehta.
+Place the downloaded file in the `bundles` folder of your deepamehta installation and restart DeepaMehta.
 
 ## GNU Public License
 
@@ -34,7 +35,7 @@ The smiley icons are licensed under Creative Commons [Attribution-Share Alike 3.
 
 ## Version History
 
-**0.3.6**, UPCOMING
+**0.3.6**, Nov 17, 2014
 
 - Compatible with DeepaMehta 4.3
 

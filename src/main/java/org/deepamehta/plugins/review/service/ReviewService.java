@@ -11,8 +11,8 @@ import de.deepamehta.core.service.PluginService;
  * * Counting values as one accumulate "Score", depends on introducing Migration1 to your application model.
  *
  * @author Malte Reißig (<malte@mikromedia.de>)
- * @website https://github.com/mukil/org.deepamehta-reviews
- * @version 0.3.6-SNAPSHOT
+ * @website https://github.com/mukil/dm4-reviews
+ * @version 0.3.6
  *
  */
 

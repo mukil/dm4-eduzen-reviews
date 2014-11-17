@@ -21,8 +21,8 @@ import org.deepamehta.plugins.review.service.ReviewService;
  * * Counting values as one accumulate "Score", depends on introducing Migration1 to your application model.
  *
  * @author Malte Reißig (<malte@mikromedia.de>)
- * @website https://github.com/mukil/org.deepamehta-reviews
- * @version 0.3.6-SNAPSHOT
+ * @website https://github.com/mukil/dm4-reviews
+ * @version 0.3.6
  *
  */
 
@@ -38,13 +38,16 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
     public final static String SOSO_TYPE_URI = "org.deepamehta.reviews.soso";
 
 
-    /** Increments the number of supportive voices (yelling "Good!"). */
+    /** Increments the number of supportive voices (yelling "Good!").
+     * @param resourceId
+     * @param clientState */
 
     @GET
     @Path("/good/{id}")
     @Produces("application/json")
     @Override
-    public Topic addToGood(@PathParam("id") long resourceId, @HeaderParam("Cookie") ClientState clientState) {
+    public Topic addToGood(@PathParam("id") long resourceId, 
+            @HeaderParam("Cookie") ClientState clientState) {
 
         DeepaMehtaTransaction tx = dms.beginTx();
         Topic topic = null;
@@ -66,18 +69,24 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
                         + "does not contain the \"org.deepamehta.reviews.good\"-type"));
             }
         } catch (Exception e) {
-            throw new WebApplicationException(new RuntimeException("something went wrong", e));
+            throw new RuntimeException("something went wrong", e);
         } finally {
             tx.finish();
         }
         return topic;
     }
+    
+    
+    /** Increments the number of supportive voices (yelling "Well, so so.").
+     * @param resourceId
+     * @param clientState */
 
     @GET
     @Path("/soso/{id}")
     @Produces("application/json")
     @Override
-    public Topic addToSoso(@PathParam("id") long resourceId, @HeaderParam("Cookie") ClientState clientState) {
+    public Topic addToSoso(@PathParam("id") long resourceId, 
+            @HeaderParam("Cookie") ClientState clientState) {
 
         DeepaMehtaTransaction tx = dms.beginTx();
         Topic topic = null;
@@ -99,14 +108,16 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
                         + "does not contain the \"org.deepamehta.reviews.soso\"-type"));
             }
         } catch (Exception e) {
-            throw new WebApplicationException(new RuntimeException("something went wrong", e));
+            throw new RuntimeException("something went wrong", e);
         } finally {
             tx.finish();
         }
         return topic;
     }
 
-    /** Increments the score of any given topic. */
+    /** Increments the score of any given topic.
+     * @param resourceId
+     * @param clientState */
 
     @GET
     @Path("/upvote/{id}")
@@ -131,18 +142,20 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
                 topic.getCompositeValue().set(SCORE_TYPE_URI, score, clientState, new Directives());
                 tx.success();
             } else {
-                throw new WebApplicationException(new RuntimeException("The TypeDefinition (model) of the given topic "
-                        + "does not contain the \"org.deepamehta.reviews.score\"-type"));
+                throw new RuntimeException("The TypeDefinition (model) of the given topic "
+                        + "does not contain the \"org.deepamehta.reviews.score\"-type");
             }
         } catch (Exception e) {
-            throw new WebApplicationException(new RuntimeException("something went wrong", e));
+            throw new RuntimeException("something went wrong", e);
         } finally {
             tx.finish();
         }
         return topic;
     }
 
-    /** Decrements the score of any given topic. */
+    /** Decrements the score of any given topic.
+     * @param resourceId
+     * @param clientState */
 
     @GET
     @Path("/downvote/{id}")
@@ -167,11 +180,11 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
                 topic.getCompositeValue().set(SCORE_TYPE_URI, score, clientState, new Directives());
                 tx.success();
             } else {
-                throw new WebApplicationException(new RuntimeException("The TypeDefinition (model) of the given topic "
-                        + "does not contain the \"org.deepamehta.reviews.score\"-type"));
+                throw new RuntimeException("The TypeDefinition (model) of the given topic "
+                        + "does not contain the \"org.deepamehta.reviews.score\"-type");
             }
         } catch (Exception e) {
-            throw new WebApplicationException(new RuntimeException("something went wrong", e));
+            throw new RuntimeException("something went wrong", e);
         } finally {
             tx.finish();
         }
