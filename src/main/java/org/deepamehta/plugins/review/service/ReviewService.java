@@ -1,7 +1,6 @@
 package org.deepamehta.plugins.review.service;
 
 import de.deepamehta.core.Topic;
-import de.deepamehta.core.service.ClientState;
 import de.deepamehta.core.service.PluginService;
 
 /**
@@ -12,18 +11,18 @@ import de.deepamehta.core.service.PluginService;
  *
  * @author Malte Reißig (<malte@mikromedia.de>)
  * @website https://github.com/mukil/dm4-reviews
- * @version 0.3.6
+ * @version 0.3.7
  *
  */
 
 public interface ReviewService extends PluginService {
 
-    Topic addToGood(long resourceId, ClientState clientState);
+    Topic addToGood(long resourceId);
 
-    Topic addToSoso(long resourceId, ClientState clientState);
+    Topic addToSoso(long resourceId);
 
-    Topic upvoteResourceById(long resourceId, ClientState clientState);
+    Topic upvoteResourceById(long resourceId);
 
-    Topic downvoteResourceById(long resourceId, ClientState clientState);
+    Topic downvoteResourceById(long resourceId);
 
 }
