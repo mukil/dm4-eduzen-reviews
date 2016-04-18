@@ -1,10 +1,9 @@
-package org.deepamehta.plugins.review.service;
+package org.deepamehta.plugins.review;
 
 import de.deepamehta.core.Topic;
-import de.deepamehta.core.service.PluginService;
 
 /**
- * A very stupid plugin for counting likes/dislikes on any kind of topics in DeepaMehta.
+ * A plugin for counting likes/dislikes on any kind of topics in DeepaMehta.
  *
  * * Counting values seperately as "Good" and "So-so", depends on introducing Migration2 to your application model.
  * * Counting values as one accumulate "Score", depends on introducing Migration1 to your application model.
@@ -14,8 +13,7 @@ import de.deepamehta.core.service.PluginService;
  * @version 0.3.7
  *
  */
-
-public interface ReviewService extends PluginService {
+public interface ReviewService {
 
     Topic addToGood(long resourceId);
 
