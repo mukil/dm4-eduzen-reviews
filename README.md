@@ -35,11 +35,11 @@ The smiley icons are licensed under Creative Commons [Attribution-Share Alike 3.
 
 ## Version History
 
-**0.3.8, Apr 19, 2016
+**0.3.8**, Apr 20, 2016
 
 - Compatible with DeepaMehta 4.8
 
-**0.3.7, Dec 06, 2014
+**0.3.7**, Dec 06, 2014
 
 - Compatible with DeepaMehta 4.4
 - Bugifix: worked around data invariance for topics instantiated via dm4-webclient
