@@ -1,4 +1,4 @@
-package org.deepamehta.plugins.review;
+package org.deepamehta.reviews;
 
 import de.deepamehta.core.Topic;
 
@@ -14,6 +14,10 @@ import de.deepamehta.core.Topic;
  *
  */
 public interface ReviewService {
+    
+    static final String SCORE_TYPE = "org.deepamehta.reviews.score";
+    static final String GOOD_TYPE = "org.deepamehta.reviews.good";
+    static final String SOSO_TYPE = "org.deepamehta.reviews.soso";
 
     Topic addToGood(long resourceId);
 
