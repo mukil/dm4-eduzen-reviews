@@ -16,9 +16,9 @@
         <version>4.8</version>
     </parent>
 
-    <properties>
+    <!--properties> commented to let jenkins not fail 
         <dm4.deploy.dir>/home/malted/toff/deepaMehta/deepamehta-4.8/bundle-deploy</dm4.deploy.dir>
-    </properties>
+    </properties-->
 
     <dependencies>
         <dependency>
