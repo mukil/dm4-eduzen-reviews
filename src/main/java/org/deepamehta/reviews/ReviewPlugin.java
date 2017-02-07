@@ -26,14 +26,14 @@ import javax.ws.rs.core.MediaType;
  * @version 0.3.8-SNAPSHOT
  *
  */
-@Path("/reviews")
+@Path("/review")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReviewPlugin extends PluginActivator implements ReviewService {
 
     private Logger log = Logger.getLogger(getClass().getName());
 
-    @Inject
+    @Inject // used in Migration3
     private WorkspacesService workspaceService;
 
     /**
@@ -50,12 +50,7 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         try {
             topic = dm4.getTopic(resourceId);
             TopicType typeDef = dm4.getTopicType(topic.getTypeUri());
-            Collection<? extends AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
-            boolean hasGoodTypeDef = false;
-            for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
-                if (associationDefinitionModel.getChildTypeUri().equals(GOOD_TYPE)) hasGoodTypeDef = true;
-            }
-            if (hasGoodTypeDef) {
+            if (hasChildTypeDefined(GOOD_TYPE, typeDef)) {
                 topic.loadChildTopics(GOOD_TYPE);
                 addOne(topic.getChildTopics(), GOOD_TYPE);
                 dm4.updateTopic(topic.getModel()); // ### timestamp bug in 4.4
@@ -83,15 +78,10 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         try {
             topic = dm4.getTopic(resourceId);
             TopicType typeDef = dm4.getTopicType(topic.getTypeUri());
-            Collection<? extends AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
-            boolean hasSosoTypeDef = false;
-            for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
-                if (associationDefinitionModel.getChildTypeUri().equals(SOSO_TYPE)) hasSosoTypeDef = true;
-            }
-            if (hasSosoTypeDef) {
+            if (hasChildTypeDefined(SOSO_TYPE, typeDef)) {
                 topic.loadChildTopics(SOSO_TYPE);
                 addOne(topic.getChildTopics(), SOSO_TYPE);
-                dm4.updateTopic(topic.getModel()); // ### timestamp bug in 4.4
+                dm4.updateTopic(topic.getModel());
             } else {
                 throw new WebApplicationException(new RuntimeException("The TypeDefinition (model) of the given topic "
                         + "does not contain the \"org.deepamehta.reviews.soso\"-type"));
@@ -116,15 +106,10 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         try {
             topic = dm4.getTopic(resourceId);
             TopicType typeDef = dm4.getTopicType(topic.getTypeUri());
-            Collection<? extends AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
-            boolean hasScoreTypeDef = false;
-            for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
-                if (associationDefinitionModel.getChildTypeUri().equals(SCORE_TYPE)) hasScoreTypeDef = true;
-            }
-            if (hasScoreTypeDef) {
+            if (hasChildTypeDefined(SCORE_TYPE, typeDef)) {
                 topic.loadChildTopics(SCORE_TYPE);
                 addOne(topic.getChildTopics(), SCORE_TYPE);
-                dm4.updateTopic(topic.getModel()); // ### timestamp bug in 4.4
+                dm4.updateTopic(topic.getModel());
             } else {
                 throw new RuntimeException("The TypeDefinition (model) of the given topic "
                         + "does not contain the \"org.deepamehta.reviews.score\"-type");
@@ -149,15 +134,10 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         try {
             topic = dm4.getTopic(resourceId);
             TopicType typeDef = dm4.getTopicType(topic.getTypeUri());
-            Collection<? extends AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
-            boolean hasScoreTypeDef = false;
-            for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
-                if (associationDefinitionModel.getChildTypeUri().equals(SCORE_TYPE)) hasScoreTypeDef = true;
-            }
-            if (hasScoreTypeDef) {
+            if (hasChildTypeDefined(SCORE_TYPE, typeDef)) {
                 topic.loadChildTopics(SCORE_TYPE);
                 substractOne(topic.getChildTopics(), SCORE_TYPE);
-                dm4.updateTopic(topic.getModel()); // ### timestamp bug in 4.4
+                dm4.updateTopic(topic.getModel());
             } else {
                 throw new RuntimeException("The TypeDefinition (model) of the given topic "
                         + "does not contain the \"org.deepamehta.reviews.score\"-type");
@@ -167,20 +147,30 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
         }
         return topic;
     }
-    
+
+    private boolean hasChildTypeDefined(String childTypeUri, TopicType typeDef) {
+        typeDef.loadChildTopics();
+        Collection<? extends AssociationDefinitionModel> typeModel = typeDef.getModel().getAssocDefs();
+        boolean hasChildTypeDefined = false;
+        for (AssociationDefinitionModel associationDefinitionModel : typeModel) {
+            if (associationDefinitionModel.getChildTypeUri().equals(childTypeUri)) hasChildTypeDefined = true;
+        }
+        return hasChildTypeDefined;
+    }
+
     private void addOne (ChildTopics childTopics, String childTypeUri) {
         int score = 1;
         try {
-            if (childTopics.getTopicOrNull(childTypeUri) != null) {
-                // initialize with +1
-                childTopics.set(childTypeUri, score);
+            Integer existingValue = childTopics.getIntOrNull(childTypeUri);
+            if (existingValue != null) { // add 1
+                score = existingValue + 1;
             } else {
-                // add 1
-                score = childTopics.getModel().getInt(childTypeUri) + 1;
-                childTopics.set(childTypeUri, score); 
+                log.warning("Could not do +1 on topic ("+childTypeUri+") - Initializing +1");
             }
+            childTopics.set(childTypeUri, score);
         } catch (ClassCastException ce) {
             // dm4-webclient has written a string into our dm4.core.numbers field
+            // add to number value in Strnig and store new number as String value again
             String value = "1";
             try {
                 score = Integer.parseInt(childTopics.getModel().getString(childTypeUri));
@@ -196,16 +186,16 @@ public class ReviewPlugin extends PluginActivator implements ReviewService {
     private void substractOne (ChildTopics childTopics, String childTypeUri) {
         int score = -1;
         try {
-            if (childTopics.getTopicOrNull(childTypeUri) != null) {
-                // initialize with -1
-                childTopics.set(childTypeUri, score);
+            Integer existingValue = childTopics.getIntOrNull(childTypeUri);
+            if (existingValue != null) { // subtract 1
+                score = existingValue - 1;
             } else {
-                // subtract 1
-                score = childTopics.getModel().getInt(childTypeUri) - 1;
-                childTopics.set(childTypeUri, score);
+                log.warning("Could not do +1 on topic ("+childTypeUri+") - Initializing to -1");
             }
+            childTopics.set(childTypeUri, score);
         } catch (ClassCastException ce) {
             // dm4-webclient has written a string into our dm4.core.numbers field
+            // substract to number value in Strnig and store new number as String value again
             String value = "-1";
             try {
                 score = Integer.parseInt(childTopics.getModel().getString(childTypeUri));
