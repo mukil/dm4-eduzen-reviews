@@ -1,11 +1,11 @@
-package org.deepamehta.reviews.migrations;
+package org.deepamehta.eduzen.reviews.migrations;
 
 import de.deepamehta.core.Topic;
 import de.deepamehta.core.TopicType;
 import de.deepamehta.core.service.Inject;
 import de.deepamehta.workspaces.WorkspacesService;
 import de.deepamehta.core.service.Migration;
-import org.deepamehta.reviews.ReviewService;
+import org.deepamehta.eduzen.reviews.ReviewService;
 
 
 /**

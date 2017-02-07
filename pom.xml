@@ -47,7 +47,7 @@
                             org.deepamehta.eduzen-reviews
                         </Bundle-SymbolicName>
                         <Bundle-Activator>
-                            org.deepamehta.reviews.ReviewPlugin
+                            org.deepamehta.eduzen.reviews.ReviewPlugin
                         </Bundle-Activator>
                     </instructions>
                 </configuration>

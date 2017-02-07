@@ -1,4 +1,4 @@
-package org.deepamehta.reviews;
+package org.deepamehta.eduzen.reviews;
 
 import de.deepamehta.core.ChildTopics;
 import de.deepamehta.core.Topic;
