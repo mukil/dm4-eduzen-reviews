@@ -7,7 +7,7 @@
     <name>DeepaMehta 4 eduZEN Reviews</name>
     <groupId>org.deepamehta</groupId>
     <artifactId>dm48-eduzen-reviews</artifactId>
-    <version>0.3.8-SNAPSHOT</version>
+    <version>0.4</version>
     <packaging>bundle</packaging>
 
     <parent>
